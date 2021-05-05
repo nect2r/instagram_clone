@@ -58,16 +58,21 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _bulidListItem(context, document) {
-    return InkWell(
-      onTap: () {
-        // ignore: missing_return
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return DetailPostPage(document);
-        }));
-      },
-      child: Image.network(
-        document['photoUrl'],
-        fit: BoxFit.cover,
+    return Hero(
+      tag: document['photoUrl'],
+      child: Material(
+        child: InkWell(
+          onTap: () {
+            // ignore: missing_return
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return DetailPostPage(document);
+            }));
+          },
+          child: Image.network(
+            document['photoUrl'],
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
